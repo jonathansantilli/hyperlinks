@@ -20,26 +20,25 @@ import jonathansantilli.hyperlink.service.PageService;
 @Path("links/{url}")
 public class HyperLink {
 
-	/**
-	 * Main resource (exposed at "links" path)
-	 * 
-	 * Method handling HTTP GET requests. The returned object will be sent
-	 * to the client as "application/json" Content-type.
-	 *
-	 * @return ArrayList<String> that will be returned as a JSON response.
-	 */
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public ArrayList<String> getHyperLinks(@PathParam("url") String pageUrl) {
+    /**
+     * Main resource (exposed at "links" path)
+     * 
+     * Method handling HTTP GET requests. The returned object will be sent
+     * to the client as "application/json" Content-type.
+     *
+     * @return ArrayList<String> that will be returned as a JSON response.
+     */
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<String> getHyperLinks(@PathParam("url") String pageUrl) {
+        try {
+            PageService service = new PageService();
+            return service.getHyperLinks(pageUrl);
+        } catch (IOException e) {
+            System.err.println("There was a problem getting the Links from the URL: " + pageUrl + "\n"
+                    + "Error: " + e.toString());
+        }
 
-		try {
-			PageService service = new PageService();
-			return service.getHyperLinks(pageUrl);
-		} catch (IOException e) {
-			System.err.println("There was a problem getting the Links from the URL: " + pageUrl + "\n"
-					+ "Error: " + e.toString());
-		}
-
-		return null;
-	}
+        return null;
+    }
 }

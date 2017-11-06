@@ -7,9 +7,9 @@ package jonathansantilli.hyperlink.exception;
  *
  */
 public class UnavailableContentException extends Exception {
-	private static final long serialVersionUID = 1249855852581323787L;
+    private static final long serialVersionUID = 1249855852581323787L;
 
-	public UnavailableContentException(Throwable cause) {
-		super(cause);
-	}
+    public UnavailableContentException(Throwable cause) {
+        super(cause);
+    }
 }

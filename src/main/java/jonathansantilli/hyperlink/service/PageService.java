@@ -17,37 +17,37 @@ import org.apache.commons.io.IOUtils;
  */
 public class PageService {
 
-	/**
-	 * Get the links presents within the HTML Web page
-	 * 
-	 * @param pageUrl String with the url page
-	 * @return ArrayList<String> with the links (<a>)
-	 * @throws IOException
-	 */
-	public ArrayList<String> getHyperLinks(String pageUrl) throws IOException {
-		Url url = new Url(pageUrl);
-		Page page = new Page(url);
+    /**
+     * Get the links presents within the HTML Web page
+     * 
+     * @param pageUrl String with the url page
+     * @return ArrayList<String> with the links (<a>)
+     * @throws IOException
+     */
+    public ArrayList<String> getHyperLinks(String pageUrl) throws IOException {
+        Url url = new Url(pageUrl);
+        Page page = new Page(url);
 
-		return page.getAnchorsElements();
-	}
+        return page.getAnchorsElements();
+    }
 
-	/**
-	 * Return the text HTML, this method is for local test purpose.
-	 * The method read the local HTML file to be served as String
-	 * 
-	 * @param pageName String page name, local resource page
-	 * @return String, the HTML text
-	 * @throws UnavailableContentException
-	 */
-	public String getTextFromHTMLDocument(String pageName) throws UnavailableContentException {
-		InputStream is = PageService.class.getClassLoader().getResourceAsStream(pageName);
-		String content = "";
-		try {
-			content = IOUtils.toString(is, "UTF-8");
-		} catch (IOException e) {
-			throw new UnavailableContentException(e);
-		}
+    /**
+     * Return the text HTML, this method is for local test purpose.
+     * The method read the local HTML file to be served as String
+     * 
+     * @param pageName String page name, local resource page
+     * @return String, the HTML text
+     * @throws UnavailableContentException
+     */
+    public String getTextFromHTMLDocument(String pageName) throws UnavailableContentException {
+        InputStream is = PageService.class.getClassLoader().getResourceAsStream(pageName);
+        String content = "";
+        try {
+            content = IOUtils.toString(is, "UTF-8");
+        } catch (IOException e) {
+            throw new UnavailableContentException(e);
+        }
 
-		return content;
-	}
+        return content;
+    }
 }
