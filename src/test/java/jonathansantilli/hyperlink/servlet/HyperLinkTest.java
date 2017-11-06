@@ -26,7 +26,7 @@ public class HyperLinkTest extends ServerTest {
     	expectedResponse.add("<a href=\"http://www.example.com\"></a>");
     	
     	@SuppressWarnings("unchecked")
-		ArrayList<String> response = getTarget().path(linksPath).request().get(ArrayList.class);
+    	ArrayList<String> response = getTarget().path(linksPath).request().get(ArrayList.class);
     	
         assertEquals(expectedResponse, response);
         assertTrue(response.size() == 1);
@@ -44,7 +44,7 @@ public class HyperLinkTest extends ServerTest {
     	ArrayList<String> expectedResponse = new ArrayList<>();
     	
     	@SuppressWarnings("unchecked")
-		ArrayList<String> response = getTarget().path(linksPath).request().get(ArrayList.class);
+    	ArrayList<String> response = getTarget().path(linksPath).request().get(ArrayList.class);
     	
         assertEquals(expectedResponse, response);
         assertTrue(response.isEmpty());
