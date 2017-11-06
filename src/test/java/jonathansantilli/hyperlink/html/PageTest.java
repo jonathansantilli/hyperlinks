@@ -24,10 +24,10 @@ public class PageTest extends ServerTest {
 		Url url = new Url(exampleUrl);
 		Page page = new Page(url);
 		ArrayList<String> expectedResponse = new ArrayList<>();
-    	expectedResponse.add("<a href=\"http://www.example.com\"></a>");
-    	
-    	ArrayList<String> response = page.getAnchorsElements();
-		
+		expectedResponse.add("<a href=\"http://www.example.com\"></a>");
+
+		ArrayList<String> response = page.getAnchorsElements();
+
 		assertEquals(expectedResponse, response);
 	}
 }

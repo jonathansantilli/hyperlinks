@@ -16,7 +16,7 @@ import org.apache.commons.io.IOUtils;
  * @author Jonathan Santilli
  */
 public class PageService {
-	
+
 	/**
 	 * Get the links presents within the HTML Web page
 	 * 
@@ -27,10 +27,10 @@ public class PageService {
 	public ArrayList<String> getHyperLinks(String pageUrl) throws IOException {
 		Url url = new Url(pageUrl);
 		Page page = new Page(url);
-		
+
 		return page.getAnchorsElements();
 	}
-	
+
 	/**
 	 * Return the text HTML, this method is for local test purpose.
 	 * The method read the local HTML file to be served as String
@@ -47,7 +47,7 @@ public class PageService {
 		} catch (IOException e) {
 			throw new UnavailableContentException(e);
 		}
-		
+
 		return content;
 	}
 }

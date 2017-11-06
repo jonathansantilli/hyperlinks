@@ -15,13 +15,13 @@ import org.jsoup.select.Elements;
  * @author Jonathan Santilli
  */
 public class Page {
-	
+
 	private Url url = null;
-	
+
 	public Page(final Url url) {
 		this.url = url;
 	}
-	
+
 	/**
 	 * Get the anchors elements present on the HTML document behind the provided <code>Url</code>
 	 * 
@@ -31,12 +31,12 @@ public class Page {
 	public ArrayList<String> getAnchorsElements() throws IOException {
 		Elements anchorsElements = this.getAnchorsElementsFromDocument();
 		ArrayList<String> anchors = new ArrayList<String>();
-		
+
 		for (Element anchor : anchorsElements) {
 			// Clean-up the internal content from the anchor
 			anchors.add(anchor.html("").toString());
 		}
-		
+
 		return anchors;
 	}
 
@@ -49,7 +49,7 @@ public class Page {
 	private Document getDocument() throws IOException {
 		return this.url.connectToUrlAsBrowser().get();
 	}
-	
+
 	/**
 	 * Select and returns the anchors within the <code>Document</code>
 	 * 

@@ -11,13 +11,13 @@ import org.jsoup.Jsoup;
  * @author Jonathan Santilli
  */
 public class Url {
-	
+
 	private String pageUrl = null;
-	
+
 	public Url(String pageUrl) {
 		this.pageUrl = pageUrl;
 	}
-	
+
 	/**
 	 * Connect to the Server through the page url sending headers as a Browser,
 	 * this is due mainly because some server denied the access to clients that does
@@ -47,7 +47,7 @@ public class Url {
 		headers.put("User-Agent", 
 				"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko)"
 						+ " Chrome/42.0.2311.135 Safari/537.36");
-		
+
 		return headers;
 	}	
 }

@@ -15,9 +15,9 @@ public class UrlTest {
 	public void testTheUrlConnectAsBrowserAndCheckTheConnectionInstance() {
 		String exampleUrl = "http://example.com";
 		Url url = new Url(exampleUrl);
-		
+
 		Connection connection = url.connectToUrlAsBrowser();
-		
+
 		assertThat(connection, instanceOf(Connection.class));
 	}
 }
