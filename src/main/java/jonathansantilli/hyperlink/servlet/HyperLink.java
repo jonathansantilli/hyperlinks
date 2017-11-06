@@ -34,11 +34,11 @@ public class HyperLink {
     	
         try {
         	PageService service = new PageService();
-			return service.getHyperLinks(pageUrl);
-		} catch (IOException e) {
-			System.out.println("There was a problem getting the Links from the URL: " + pageUrl + "\n"
-					+ "Error: " + e.toString());
-		}
+        	return service.getHyperLinks(pageUrl);
+        } catch (IOException e) {
+        	System.err.println("There was a problem getting the Links from the URL: " + pageUrl + "\n"
+        			+ "Error: " + e.toString());
+        }
         
         return null;
     }

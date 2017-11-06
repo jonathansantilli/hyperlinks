@@ -15,9 +15,9 @@ import jonathansantilli.hyperlink.service.PageService;
  */
 @Path("static-content")
 public class StaticContent {
-	
-	private PageService pageService = null;
 
+	private PageService pageService = null;
+	
 	public StaticContent() {
 		this.pageService = new PageService();
 	}

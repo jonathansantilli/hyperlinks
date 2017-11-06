@@ -41,13 +41,13 @@ public class PageService {
 	 */
 	public String getTextFromHTMLDocument(String pageName) throws UnavailableContentException {
 		InputStream is = PageService.class.getClassLoader().getResourceAsStream(pageName);
-    	String content = "";
-    	try {
+		String content = "";
+		try {
 			content = IOUtils.toString(is, "UTF-8");
 		} catch (IOException e) {
 			throw new UnavailableContentException(e);
 		}
-    	
-    	return content;
+		
+		return content;
 	}
 }
