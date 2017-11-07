@@ -2,6 +2,7 @@ package jonathansantilli.hyperlink.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -19,6 +20,7 @@ import jonathansantilli.hyperlink.service.PageService;
  */
 @Path("links/{url}")
 public class HyperLink {
+    private static final Logger logger = Logger.getLogger(HyperLink.class.getName());
 
     /**
      * Main resource (exposed at "links" path)
@@ -35,8 +37,8 @@ public class HyperLink {
             PageService service = new PageService();
             return service.getHyperLinks(pageUrl);
         } catch (IOException e) {
-            System.err.println("There was a problem getting the Links from the URL: " + pageUrl + "\n"
-                    + "Error: " + e.toString());
+            logger.info("There was a problem getting the Links from the URL: " + pageUrl + "\n"
+                        + "Error: " + e.toString());
         }
 
         return null;

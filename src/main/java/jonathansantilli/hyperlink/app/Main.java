@@ -1,11 +1,12 @@
 package jonathansantilli.hyperlink.app;
 
+import java.io.IOException;
+import java.net.URI;
+import java.util.logging.Logger;
+
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
-
-import java.io.IOException;
-import java.net.URI;
 
 /**
  * Main entry point for the Application
@@ -13,6 +14,7 @@ import java.net.URI;
  * @author Jonathan Santilli
  */
 public class Main {
+    private static final Logger logger = Logger.getLogger(Main.class.getName());
     /**
      * Starts Grizzly HTTP server exposing JAX-RS resources defined in the Application.
      * 
@@ -35,8 +37,9 @@ public class Main {
      */
     public static void main(String[] args) throws IOException {
         final HttpServer server = startServer();
-        System.out.println(String.format("App started and available at %s\n"
-                + "Hit enter to stop it...", AppConfiguration.BASE_URI + "links/<encodec_url_parameter>"));
+        logger.info(String.format("\n\n\nApp started and available at %s\n"
+                    + "Hit <ENTER> to stop the App...\n\n\n", AppConfiguration.BASE_URI 
+                    + "links/<encodec_url_parameter>"));
         System.in.read();
         server.shutdownNow();
     }
