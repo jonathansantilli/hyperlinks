@@ -40,9 +40,10 @@ public class PageService {
      * @throws UnavailableContentException
      */
     public String getTextFromHTMLDocument(String pageName) throws UnavailableContentException {
-        InputStream is = PageService.class.getClassLoader().getResourceAsStream(pageName);
+        InputStream is = null;
         String content = "";
         try {
+            is = PageService.class.getClassLoader().getResourceAsStream(pageName);
             content = IOUtils.toString(is, "UTF-8");
         } catch (IOException e) {
             throw new UnavailableContentException(e);
