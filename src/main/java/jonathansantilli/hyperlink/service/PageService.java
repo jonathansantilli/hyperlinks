@@ -2,7 +2,7 @@ package jonathansantilli.hyperlink.service;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
+import java.util.List;
 
 import jonathansantilli.hyperlink.exception.UnavailableContentException;
 import jonathansantilli.hyperlink.html.Page;
@@ -24,7 +24,7 @@ public class PageService {
      * @return ArrayList<String> with the links (<a>)
      * @throws IOException
      */
-    public ArrayList<String> getHyperLinks(String pageUrl) throws IOException {
+    public static List<String> getHyperLinks(String pageUrl) throws IOException {
         Url url = new Url(pageUrl);
         Page page = new Page(url);
 
@@ -46,6 +46,8 @@ public class PageService {
             content = IOUtils.toString(is, "UTF-8");
         } catch (IOException e) {
             throw new UnavailableContentException(e);
+        } finally {
+            IOUtils.closeQuietly(is);
         }
 
         return content;

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import jonathansantilli.hyperlink.http.Url;
 
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 /**
@@ -31,11 +30,8 @@ public class Page {
     public ArrayList<String> getAnchorsElements() throws IOException {
         Elements anchorsElements = this.getAnchorsElementsFromDocument();
         ArrayList<String> anchors = new ArrayList<String>();
-
-        for (Element anchor : anchorsElements) {
-            // Clean-up the internal content from the anchor
-            anchors.add(anchor.html("").toString());
-        }
+        
+        anchorsElements.forEach(anchor -> anchors.add(anchor.html("").toString()));
 
         return anchors;
     }

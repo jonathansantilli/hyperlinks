@@ -2,6 +2,7 @@ package jonathansantilli.hyperlink.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.ws.rs.GET;
@@ -32,15 +33,15 @@ public class HyperLink {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public ArrayList<String> getHyperLinks(@PathParam("url") String pageUrl) {
+    public List<String> getHyperLinks(@PathParam("url") String pageUrl) {
+        ArrayList<String> links = new ArrayList<>();
         try {
-            PageService service = new PageService();
-            return service.getHyperLinks(pageUrl);
+            links = (ArrayList<String>)PageService.getHyperLinks(pageUrl);
         } catch (IOException e) {
             logger.info("There was a problem getting the Links from the URL: " + pageUrl + "\n"
                         + "Error: " + e.toString());
         }
 
-        return null;
+        return links;
     }
 }

@@ -7,11 +7,13 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
+import jonathansantilli.hyperlink.app.AppConfiguration;
+
 import org.junit.Test;
 
 public class HyperLinkTest extends ServerTest {
 
-    private String staticContentUrl = "http://localhost:8080/static-content";
+    private String staticContentUrl = AppConfiguration.BASE_URI + "static-content";
 
     /**
      * Test to verify if the HTML response contains the anchors (links).
@@ -29,7 +31,7 @@ public class HyperLinkTest extends ServerTest {
         ArrayList<String> response = getTarget().path(linksPath).request().get(ArrayList.class);
 
         assertEquals(expectedResponse, response);
-        assertTrue(response.size() == 1);
+        assertTrue("The response should contain just one anchor", response.size() == 1);
     }
 
     /**

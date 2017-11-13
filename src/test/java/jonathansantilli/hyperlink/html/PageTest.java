@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import jonathansantilli.hyperlink.app.AppConfiguration;
 import jonathansantilli.hyperlink.http.Url;
 import jonathansantilli.hyperlink.servlet.ServerTest;
 
@@ -20,7 +21,7 @@ public class PageTest extends ServerTest {
      */
     @Test
     public void testPageToReturnsAnchorsElementsFromDocument() throws IOException {
-        String exampleUrl = "http://localhost:8080/static-content/example-with-one-link";
+        String exampleUrl = AppConfiguration.BASE_URI + "static-content/example-with-one-link";
         Url url = new Url(exampleUrl);
         Page page = new Page(url);
         ArrayList<String> expectedResponse = new ArrayList<>();
