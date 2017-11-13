@@ -2,6 +2,7 @@ package jonathansantilli.hyperlink.html;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import jonathansantilli.hyperlink.http.Url;
 
@@ -27,7 +28,7 @@ public class Page {
      * @return <code>ArrayList<String></code> with the anchors links
      * @throws IOException
      */
-    public ArrayList<String> getAnchorsElements() throws IOException {
+    public List<String> getAnchorsElements() throws IOException {
         Elements anchorsElements = this.getAnchorsElementsFromDocument();
         ArrayList<String> anchors = new ArrayList<String>();
         
@@ -53,7 +54,6 @@ public class Page {
      * @throws IOException
      */
     private Elements getAnchorsElementsFromDocument() throws IOException {
-        Document doc = this.getDocument();
-        return doc.select("a");
+        return this.getDocument().select("a");
     } 
 }

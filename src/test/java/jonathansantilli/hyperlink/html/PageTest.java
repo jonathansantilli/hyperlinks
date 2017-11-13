@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import jonathansantilli.hyperlink.app.AppConfiguration;
 import jonathansantilli.hyperlink.http.Url;
@@ -24,10 +25,10 @@ public class PageTest extends ServerTest {
         String exampleUrl = AppConfiguration.BASE_URI + "static-content/example-with-one-link";
         Url url = new Url(exampleUrl);
         Page page = new Page(url);
-        ArrayList<String> expectedResponse = new ArrayList<>();
+        List<String> expectedResponse = new ArrayList<>();
         expectedResponse.add("<a href=\"http://www.example.com\"></a>");
 
-        ArrayList<String> response = page.getAnchorsElements();
+        List<String> response = page.getAnchorsElements();
 
         assertEquals(expectedResponse, response);
     }

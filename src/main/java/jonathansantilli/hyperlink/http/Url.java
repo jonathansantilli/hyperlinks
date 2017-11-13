@@ -1,6 +1,7 @@
 package jonathansantilli.hyperlink.http;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -37,7 +38,7 @@ public class Url {
      * 
      * @return HashMap<String, String> with like browser headers
      */
-    private HashMap<String, String> getBrowserHeaders() {
+    private Map<String, String> getBrowserHeaders() {
         HashMap<String, String> headers = new HashMap<String, String>();
         headers.put("Accept-Encoding", "gzip, deflate");
         headers.put("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");

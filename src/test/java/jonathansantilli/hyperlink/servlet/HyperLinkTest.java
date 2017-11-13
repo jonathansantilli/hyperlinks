@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.List;
 
 import jonathansantilli.hyperlink.app.AppConfiguration;
 
@@ -24,11 +25,11 @@ public class HyperLinkTest extends ServerTest {
     public void testLinksEndPointReturnTheLinkPresentOnTheHTMLDocument() throws UnsupportedEncodingException {
         String urlParameter = URLEncoder.encode(staticContentUrl + "/example-with-one-link", "UTF-8");
         String linksPath = "links/" + urlParameter;
-        ArrayList<String> expectedResponse = new ArrayList<>();
+        List<String> expectedResponse = new ArrayList<>();
         expectedResponse.add("<a href=\"http://www.example.com\"></a>");
 
         @SuppressWarnings("unchecked")
-        ArrayList<String> response = getTarget().path(linksPath).request().get(ArrayList.class);
+        List<String> response = getTarget().path(linksPath).request().get(List.class);
 
         assertEquals(expectedResponse, response);
         assertTrue("The response should contain just one anchor", response.size() == 1);
@@ -43,12 +44,12 @@ public class HyperLinkTest extends ServerTest {
     public void testLinksEndPointReturnEmptyResponse() throws UnsupportedEncodingException {
         String urlParameter = URLEncoder.encode(staticContentUrl + "/example-with-no-link", "UTF-8");
         String linksPath = "links/" + urlParameter;
-        ArrayList<String> expectedResponse = new ArrayList<>();
+        List<String> expectedResponse = new ArrayList<>();
 
         @SuppressWarnings("unchecked")
-        ArrayList<String> response = getTarget().path(linksPath).request().get(ArrayList.class);
+        List<String> response = getTarget().path(linksPath).request().get(List.class);
 
         assertEquals(expectedResponse, response);
-        assertTrue(response.isEmpty());
+        assertTrue("The page should not contain links", response.isEmpty());
     }
 }
