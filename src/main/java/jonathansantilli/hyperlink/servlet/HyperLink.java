@@ -29,14 +29,14 @@ public class HyperLink {
      * Method handling HTTP GET requests. The returned object will be sent
      * to the client as "application/json" Content-type.
      *
-     * @return ArrayList<String> that will be returned as a JSON response.
+     * @return List<String> that will be returned as a JSON response.
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<String> getHyperLinks(@PathParam("url") String pageUrl) {
-        ArrayList<String> links = new ArrayList<>();
+        List<String> links = new ArrayList<>();
         try {
-            links = (ArrayList<String>)PageService.getHyperLinks(pageUrl);
+            links = PageService.getHyperLinks(pageUrl);
         } catch (IOException e) {
             logger.info("There was a problem getting the Links from the URL: " + pageUrl + "\n"
                         + "Error: " + e.toString());
